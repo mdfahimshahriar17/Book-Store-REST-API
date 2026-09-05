@@ -2,11 +2,12 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.authtoken.models import Token
 from book import models
+from django.contrib.auth.models import User
 from . import serializer
 
-class BookListViewSet(viewsets.ModelViewSet):
-    queryset = models.Book.objects.all()
-    serializer_class = serializer.BookListSerializer
+class RegistrationViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = serializer.RegistrationSerializer
 
     def create(self, request, *args, **kwargs):
         serializers = self.get_serializer(data = request.data)
