@@ -115,8 +115,20 @@ REST_FRAMEWORK = {
 
         #Session Authentication
         # 'rest_framework.authentication.SessionAuthentication',
-    ]
+    ],
+    #Thortteling
+    'DEFAULT_THROTTLE_CLASSES': [
+    'rest_framework.throttling.AnonRateThrottle',
+    'rest_framework.throttling.UserRateThrottle',
+    ],
+
+    'DEFAULT_THROTTLE_RATES': {
+    'anon': '20/min',
+    'user': '50/min',
+    },
 }
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
