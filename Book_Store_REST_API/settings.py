@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
 
 
     'book',
@@ -113,7 +114,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
 
-    ]
+    ],
 }
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
