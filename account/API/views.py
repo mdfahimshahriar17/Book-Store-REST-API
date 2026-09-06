@@ -1,16 +1,14 @@
 from rest_framework.response import Response
 from rest_framework import viewsets
+from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
-from book import models
 from django.contrib.auth.models import User
+from book import models
 from . import serializer
 
-class RegistrationViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = serializer.RegistrationSerializer
-
-    def create(self, request, *args, **kwargs):
-        serializers = self.get_serializer(data = request.data)
+class RegistrationView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializers = serializer.RegistrationSerializer(data = request.data)
         serializers.is_valid(raise_exception = True)
         user = serializers.save()
 
