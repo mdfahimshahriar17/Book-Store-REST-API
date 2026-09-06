@@ -4,7 +4,7 @@ import django_filters.rest_framework
 
 from book import models
 from . import serializer
-
+from . import pagination
 class BookListViewSet(viewsets.ModelViewSet):
     #Bringing all the items from DB
     queryset = models.Book.objects.all()
@@ -26,3 +26,6 @@ class BookListViewSet(viewsets.ModelViewSet):
     #Ordering by price
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ['price']
+
+    #Pagination, How many item will be show in perpage
+    pagination_class = pagination.BookPagination
